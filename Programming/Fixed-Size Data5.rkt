@@ -1,0 +1,51 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname |Fixed-Size Data5|) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(require 2htdp/universe)
+(require 2htdp/image)
+
+(define RED (circle 10 "solid" "red"))
+(define GREEN (circle 10 "solid" "green"))
+(define YELLOW (circle 10 "solid" "yellow"))
+
+; WorldState is a string
+; eg. ws == "green" OR ws == "red"
+
+; Main
+; WorldState -> WorldState
+; From an initial state, inputs a WorldState and outputs the
+; next WorldState using the event-handlers
+(define (main sw)
+  (big-bang sw
+    [on-tick tick-handler 0.5]
+    [to-draw render]))
+
+; Render
+; WorldState -> Image
+; From a WorldState, output an image utilizing
+; the current WorldState
+(define (render cw) (render-light cw))
+
+; Tick-handler
+; WorldState -> WorldState
+; From a WorldState, output the next WorldState
+; utilizing the current WorldState
+(define (tick-handler cw) (next-light cw))
+
+; Next-light
+; String -> String
+; From a string, generate the next light
+; in the sequence
+(define (next-light current-light) (cond
+             [(string=? "red" current-light) "green"]
+             [(string=? "green" current-light) "yellow"]
+             [(string=? "yellow" current-light) "red"]))
+
+; Render-light
+; String -> Image
+; From an input string CURRENT-COLOR, generate the
+; image for the current light
+(define (render-light inpString) (cond
+             [(string=? "red" inpString) RED]
+             [(string=? "green" inpString) GREEN]
+             [(string=? "yellow" inpString) YELLOW]))
