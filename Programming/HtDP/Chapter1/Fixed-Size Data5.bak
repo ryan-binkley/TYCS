@@ -17,7 +17,7 @@
 ; next WorldState using the event-handlers
 (define (main sw)
   (big-bang sw
-    [on-tick tick-handler]
+    [on-tick tick-handler 0.5]
     [to-draw render]))
 
 ; Render

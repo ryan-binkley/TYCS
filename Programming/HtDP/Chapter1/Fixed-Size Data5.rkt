@@ -36,6 +36,9 @@
 ; String -> String
 ; From a string, generate the next light
 ; in the sequence
+(check-expect (next-light "red") "green")
+(check-expect (next-light "green") "yellow")
+(check-expect (next-light "yellow") "red")
 (define (next-light current-light) (cond
              [(string=? "red" current-light) "green"]
              [(string=? "green" current-light) "yellow"]
