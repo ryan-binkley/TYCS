@@ -37,8 +37,19 @@
 
 ; render
 ; World -> Image
-(define (render w) (place-image)
+(define (render w) (place-image BALL (/ WIDTH 2) w BACKGROUND))
+; Tests
+(check-expect (render 50)
+              (place-image BALL (/ WIDTH 2) 50 BACKGROUND))
+(check-expect (render 50)
+              (place-image BALL (/ WIDTH 2) 200 BACKGROUND))
+(check-expect (render 252)
+              (place-image BALL (/ WIDTH 2) 252 BACKGROUND))
 
 ; tick-handler
 ; World -> World
-(define (tick-handler w) w)
+(define (tick-handler w) (+ w 2))
+; Tests
+(check-expect (tick-handler 30) 32)
+(check-expect (tick-handler 0) 2)
+(check-expect (tick-handler 71) 73)
