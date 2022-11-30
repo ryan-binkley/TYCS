@@ -11,10 +11,7 @@
 (define FLOORHEIGHT (* HEIGHT 0.9))
 (define BALLRADIUS 15)
 (define BALL (circle BALLRADIUS "solid" "red"))
-(define BACKGROUND (add-line(add-line(empty-scene WIDTH HEIGHT)
-                            0 CEILINGHEIGHT WIDTH
-                            CEILINGHEIGHT "black")
-                            0 FLOORHEIGHT WIDTH FLOORHEIGHT "black"))
+(define BACKGROUND (empty-scene WIDTH HEIGHT))
 
 ; Data Definitions
 
@@ -32,12 +29,11 @@
 ; World -> World
 (define (main w)
   (big-bang w
-    [on-tick tick-handler]
-    [on-draw render]))
+    []))
 
 ; render
 ; World -> Image
-(define (render w) (place-image)
+(define (render w) image)
 
 ; tick-handler
 ; World -> World
