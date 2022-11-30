@@ -41,7 +41,7 @@
 ; Tests
 (check-expect (render 50)
               (place-image BALL (/ WIDTH 2) 50 BACKGROUND))
-(check-expect (render 50)
+(check-expect (render 200)
               (place-image BALL (/ WIDTH 2) 200 BACKGROUND))
 (check-expect (render 252)
               (place-image BALL (/ WIDTH 2) 252 BACKGROUND))
