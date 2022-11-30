@@ -18,6 +18,13 @@
 
 ; Data Definitions
 
+; BallPosn Structure
+; Contains the following fields:
+; LastTouchedTop (boolean)
+; Velocity
+(define-struct ball [lastTouchedTop velocity])
+(define bP (make-ball (#True 2)))
+
 ; World (w)
 ; World here is a number and will also
 ; be the center of the balls position
