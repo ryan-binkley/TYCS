@@ -16,7 +16,7 @@
 #;
 (define (fn-for-countdown c)
   (cond [(false? c) (...)]
-        [(and (number? c) (<= 1 c) (<= c 10)) (... c)]
+        [(number? c) (... c)]
         [else (...)]))
 
   ;; Template rules used:
